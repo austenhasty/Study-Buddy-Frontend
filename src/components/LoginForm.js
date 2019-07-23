@@ -78,7 +78,7 @@ getProfile = () => {
   render(){
     return (
       <div>
-        <Form onSubmit={this.login}>
+        <Form className="login" onSubmit={this.login}>
           <div>
             <Form.Field>
               <label>Username: </label>
