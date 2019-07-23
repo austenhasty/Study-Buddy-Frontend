@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Menu, Button } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 
 export default class NavBar extends Component {
@@ -8,16 +9,24 @@ export default class NavBar extends Component {
     return(
       <Menu>
         <Menu.Item>
-          <Button>Home</Button>
+          <Link to="/profile">
+            <Button>Home</Button>
+          </Link>
         </Menu.Item>
         <Menu.Item>
-          <Button>Topics</Button>
+          <Link to="/profile">
+            <Button>Topics</Button>
+          </Link>
         </Menu.Item>
         <Menu.Item>
-          <Button>Notecards</Button>
+          <Link to="/notecards">
+            <Button>Notecards</Button>
+          </Link>
         </Menu.Item>
         <Menu.Item>
-          <Button>Log Out</Button>
+          
+            <Button>Log Out</Button>
+
         </Menu.Item>
       </Menu>
     )

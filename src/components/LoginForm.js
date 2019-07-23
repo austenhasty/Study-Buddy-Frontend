@@ -1,12 +1,12 @@
 import React, {Component} from 'react'
 import { Form } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 
 export default class LoginForm extends Component {
 
 state ={
-  username: '',
-  loggedIn: false
+  username: ''
 }
 
 constructor() {
@@ -79,6 +79,7 @@ getProfile = () => {
     return (
       <div>
         <Form className="login" onSubmit={this.login}>
+          <h2>Welcome To Study Buddy! Please Sign In</h2>
           <div>
             <Form.Field>
               <label>Username: </label>
@@ -90,6 +91,8 @@ getProfile = () => {
               <input id="login" name="password" type="password" placeholder="password" ref={this.password}/>
             </Form.Field>
             <input type="submit" className="large ui button" value="Sign In" />
+            <div>Don't have an account?</div>
+            <Link to="/users/new">Create Account</Link>
           </div>
         </Form>
       </div>
