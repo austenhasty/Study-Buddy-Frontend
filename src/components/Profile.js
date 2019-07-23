@@ -11,7 +11,11 @@ export default class Profile extends Component {
   }
 
   componentDidMount() {
-    fetch('')
+    fetch('http://localhost:3000/api/v1/topics')
+    .then(res => res.json())
+    .then(res => this.setState({
+      myTopics: res
+    }))
   }
 
 

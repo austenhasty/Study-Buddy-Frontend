@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import { BrowserRouter as Router, Route} from 'react-router-dom'
 import SignUpForm from './components/SignUpForm'
 import LoginForm from './components/LoginForm'
 import NavBar from './components/NavBar'
@@ -20,10 +21,18 @@ class App extends Component {
   render() {
     return (
     <div className="App">
-      {/* <NavBar />
-      <LoginForm user={this.state.user} updateUser={this.updateUser}/> */}
-      {/* <SignUpForm /> */}
-      <Profile />
+      <Router>
+
+        <NavBar />
+        <Route path="/users/new" render={(props) => <SignUpForm {...props} onCreateUser={this.updateUser}/>
+        }
+        />
+        <Route exact path="/" render ={(props) => (<LoginForm {...props} user={this.state.user} onLogin={this.updateUser}/>
+        )}
+        />
+        <Route path={"/profile"} render={(props) => <Profile {...props} /> }
+        />
+    </Router>
     </div>
     );
   }

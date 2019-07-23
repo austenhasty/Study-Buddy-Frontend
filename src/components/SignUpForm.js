@@ -27,7 +27,7 @@ export default class SignUpForm extends Component {
           <input id="signup" name="password" type="password" placeholder="Password" />
         </Form.Field>
 
-        <Button type='submit'>Create Account</Button>
+        <Button type='submit'>Create New User</Button>
         <Divider hidden />
       </Form>
     )
