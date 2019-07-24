@@ -14,9 +14,9 @@ constructor() {
   this.username = React.createRef()
   this.password = React.createRef()
 
-  if (this.getToken()) {
-    this.getProfile()
-  }
+  // if (this.getToken()) {
+  //   this.getProfile()
+  // }
 }
 
 login = (ev) => {
@@ -38,6 +38,12 @@ login = (ev) => {
     if (json && json.jwt) {
       this.saveToken(json.jwt)
       this.getProfile()
+      this.setState({
+        username: username
+      })
+      window.location.replace("http://localhost:3001/profile")
+    } else {
+      console.log("Try again Nerd!")
     }
   })
 }
@@ -59,6 +65,7 @@ getProfile = () => {
   .then(json => {
     console.log('profile:', json)
     this.setState({user: json.user})
+    this.props.onLogin(json.user)
     })
   }
 
@@ -78,17 +85,17 @@ getProfile = () => {
   render(){
     return (
       <div>
-        <Form className="login" onSubmit={this.login}>
+        <Form className="login" onSubmit={this.login} >
           <h2>Welcome To Study Buddy! Please Sign In</h2>
           <div>
             <Form.Field>
               <label>Username: </label>
-              <input name="username" type="text" placeholder="username" ref={this.username}/>
+              <input name="username" type="text" placeholder="username" ref={this.username} required/>
             </Form.Field>
 
             <Form.Field>
               <label>Password: </label>
-              <input id="login" name="password" type="password" placeholder="password" ref={this.password}/>
+              <input id="login" name="password" type="password" placeholder="password" ref={this.password} required/>
             </Form.Field>
             <input type="submit" className="large ui button" value="Sign In" />
             <div>Don't have an account?</div>

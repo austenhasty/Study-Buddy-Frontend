@@ -27,6 +27,7 @@ export default class Profile extends Component {
             Welcome {this.props.username}
           </h3>
         </Card>
+
       </div>
     )
   }
