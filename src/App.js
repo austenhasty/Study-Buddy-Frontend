@@ -5,6 +5,7 @@ import SignUpForm from './components/SignUpForm'
 import LoginForm from './components/LoginForm'
 import NavBar from './components/NavBar'
 import Profile from './components/Profile'
+import Notecards from './components/Notecards'
 
 class App extends Component {
   constructor(){
@@ -32,7 +33,8 @@ class App extends Component {
         />
         <Route path={"/profile"} render={(props) => <Profile {...props} /> }
         />
-    </Router>
+      </Router>
+      {/* <Notecards /> */}
     </div>
     );
   }

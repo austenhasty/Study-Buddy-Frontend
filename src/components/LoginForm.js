@@ -41,7 +41,7 @@ login = (ev) => {
       this.setState({
         username: username
       })
-      window.location.replace("http://localhost:3001/profile")
+      // window.location.replace("http://localhost:3001/profile")
     } else {
       console.log("Try again Nerd!")
     }
@@ -85,7 +85,7 @@ getProfile = () => {
   render(){
     return (
       <div>
-        <Form className="login" onSubmit={this.login} >
+        <Form className="login" onSubmit={this.login}>
           <h2>Welcome To Study Buddy! Please Sign In</h2>
           <div>
             <Form.Field>
