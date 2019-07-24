@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Button} from 'semantic-ui-react'
+import {Button, Header, Modal, Form, List} from 'semantic-ui-react'
 
 
 export default class Profile extends Component {
@@ -33,16 +33,24 @@ export default class Profile extends Component {
   render(){
     return (
       <div>
-        {/* <Card>
-          <h3>
-            Welcome {this.props.username}
-          </h3>
-        </Card> */}
-        <h2>My Topics</h2>
-        <Button>Create New Topic</Button>
+        <Modal trigger={<Button>New Topic</Button>} centered={false}>
+          <Modal.Header>Create A New Topic</Modal.Header>
+          <Modal.Content >
+            <Modal.Description>
+              <Header>Create a New Topic:</Header>
+              <Form>
+                <Form.Field>
+                  <label>Topic Name:</label>
+                  <input name="newtopic" type="text" placeholder="topic name" />
+                </Form.Field>
+                <input type="submit" className="large ui button" value="Create Topic" />
+              </Form>
+            </Modal.Description>
+          </Modal.Content>
+        </Modal>
         <ul>
-          {this.state.myTopics.map((topic, id) => {
-            return <li id="topicId" className="topicList">{topic.name}</li>
+          {this.state.myTopics.map((topic) => {
+            return <List.Item key={topic.id} className="topicList">{topic.name}</List.Item>
           })}
         </ul>
       </div>

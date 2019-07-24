@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Menu, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
-
 export default class NavBar extends Component {
 
   render(){
@@ -24,7 +23,7 @@ export default class NavBar extends Component {
           </Link>
         </Menu.Item>
         <Menu.Item>
-          
+
             <Button>Log Out</Button>
 
         </Menu.Item>
