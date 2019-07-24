@@ -33,8 +33,8 @@ class App extends Component {
         />
         <Route path={"/profile"} render={(props) => <Profile {...props} /> }
         />
-      </Router>
-      {/* <Notecards /> */}
+        <Route path={"/notecards"} render={(props) => <Notecards {...props} />} />
+          </Router>
     </div>
     );
   }
