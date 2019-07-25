@@ -22,7 +22,7 @@ export default class Notecard extends Component {
  }
 
   componentDidMount() {
-    fetch('http://localhost:3000/api/v1/notecards')
+    fetch(' http://localhost:3000/api/v1/notecards')
     .then(res => res.json())
     .then(res => this.setState({
       // myFronts: res.map(card => card.term),
@@ -36,32 +36,22 @@ export default class Notecard extends Component {
 <div>
   <Card.Group>
     {this.state.cards.map(card => {
-      return (
-        <ReactCardFlip isFlipped={this.state.isFlipped}  flipDirection="vertical">
+      return <ReactCardFlip isFlipped={this.state.isFlipped}  flipDirection="horizontal">
 
-          <FrontCard key="front" term={card.term} isFlipped={this.state.isFlipped} handleClick={this.handleClick} myFronts={this.state.myFronts}>
-          </FrontCard>
-
+        <FrontCard key="front" term={card.term} onClick={this.handleClick} >
+        </FrontCard>
 
 
-          <BackCard key="back" defintion={card.definition} isFlipped={this.state.isFlipped} handleClick={this.handleClick} myBacks={this.state.myBacks}>
-          </BackCard>
-        </ReactCardFlip>
 
-      )
+        <BackCard key="back" defintion={card.definition} onClick={this.handleClick} >
+        </BackCard>
+      </ReactCardFlip>
+
+
     })}
   </Card.Group>
   </div>
-      // <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="vertical">
-      //
-      //   <FrontCard key="front" handleClick={this.handleClick} myFronts={this.state.myFronts}>
-      //   </FrontCard>
-      //
-      //
-      //
-      //   <BackCard key="back" handleClick={this.handleClick} myBacks={this.state.myBacks}>
-      //   </BackCard>
-      // </ReactCardFlip>
+
     )
   }
 }

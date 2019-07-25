@@ -6,7 +6,8 @@ export default class Profile extends Component {
   constructor(){
     super()
     this.state = {
-      myTopics: []
+      myTopics: [],
+      newTopic: null
     }
   }
 
@@ -26,8 +27,28 @@ export default class Profile extends Component {
     })
   }
 
-  handleClick= () => {
+  handleNewTopic= event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
 
+  handleSubmit= (ev) => {
+    ev.preventDefault()
+    const token = localStorage.getItem('jwt')
+    fetch('http://localhost:3000/api/v1/topics', {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer ' + token,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({name: this.state.newTopic})
+    })
+    .then(res => res.json())
+    .then(res => this.setState(prevState=> ({
+      myTopics: [...prevState.myTopics, res.topic]
+    })))
   }
 
   render(){
@@ -38,10 +59,10 @@ export default class Profile extends Component {
           <Modal.Content >
             <Modal.Description>
               <Header>Create a New Topic:</Header>
-              <Form>
+              <Form onSubmit={this.handleSubmit}>
                 <Form.Field>
                   <label>Topic Name:</label>
-                  <input name="newtopic" type="text" placeholder="topic name" />
+                  <input name="newTopic" type="text" placeholder="topic name" onChange={this.handleNewTopic}/>
                 </Form.Field>
                 <input type="submit" className="large ui button" value="Create Topic" />
               </Form>

@@ -11,12 +11,34 @@ class App extends Component {
   constructor(){
     super()
     this.state= {
-      user: null
+      user: null,
+      loggedIn: false
     }
   }
 
-  updateUser = (user) => {
-    this.setState({user: user})
+  handleLogin = (user) => {
+    this.setState({
+      user: user,
+      loggedIn: true
+    })
+  }
+
+  // handleLogout = () => {
+  //   this.
+  // }
+
+  logout = () => {
+    this.clearToken()
+    this.setState({
+      user: null,
+      loggedIn: false
+    })
+    window.location.replace('http://localhost:3001/')
+    // return false
+  }
+
+  clearToken(jwt) {
+    localStorage.setItem('jwt', '')
   }
 
   render() {
@@ -24,17 +46,17 @@ class App extends Component {
     <div className="App">
       <Router>
 
-        <NavBar />
-        <Route path="/users/new" render={(props) => <SignUpForm {...props} onCreateUser={this.updateUser}/>
+        <NavBar handleLogout={this.logout}/>
+        <Route path="/users/new" render={(props) => <SignUpForm {...props} />
         }
         />
-        <Route exact path="/" render ={(props) => (<LoginForm {...props} user={this.state.user} onLogin={this.updateUser}/>
+        <Route exact path="/" render ={(props) => (<LoginForm {...props} user={this.state.user} loggedIN={this.state.loggedIn} handleLogin={this.handleLogin}/>
         )}
         />
         <Route path={"/profile"} render={(props) => <Profile {...props} /> }
         />
         <Route path={"/notecards"} render={(props) => <Notecards {...props} />} />
-          </Router>
+      </Router>
     </div>
     );
   }
