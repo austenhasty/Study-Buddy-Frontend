@@ -38,11 +38,9 @@ login = (ev) => {
     if (json && json.jwt) {
       this.saveToken(json.jwt)
       this.getProfile()
-      this.setState({
-        username: username
-      })
-      // window.location.replace("http://localhost:3001/profile")
-    } else {
+    //   this.setState({
+      window.location.replace("http://localhost:3001/profile")
+    // } else {
       console.log("Try again Nerd!")
     }
   })
@@ -65,7 +63,7 @@ getProfile = () => {
   .then(json => {
     console.log('profile:', json)
     this.setState({user: json.user})
-    this.props.onLogin(json.user)
+    this.props.handleLogin(json.user)
     })
   }
 
