@@ -5,7 +5,8 @@ import SignUpForm from './components/SignUpForm'
 import LoginForm from './components/LoginForm'
 import NavBar from './components/NavBar'
 import Profile from './components/Profile'
-import Notecards from './components/Notecards'
+// import Notecards from './components/Notecards'
+import NotecardList from './components/NotecardList'
 
 class App extends Component {
   constructor(){
@@ -55,7 +56,7 @@ class App extends Component {
         />
         <Route path={"/profile"} render={(props) => <Profile {...props} /> }
         />
-        <Route path={"/notecards"} render={(props) => <Notecards {...props} />} />
+        <Route path={"/notecards"} render={(props) => <NotecardList {...props} />} />
       </Router>
     </div>
     );
