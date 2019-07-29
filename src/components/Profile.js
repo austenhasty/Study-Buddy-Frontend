@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {Button, Header, Modal, Form, List, Card} from 'semantic-ui-react'
-import { BrowserRouter as Router, Route} from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link} from 'react-router-dom'
 import NotecardList from './NotecardList'
 
 
@@ -125,23 +125,25 @@ export default class Profile extends Component {
         <ul>
           {this.state.myTopics.map((topic) => {
             return <Card ><List.Item key={topic.id} className="topicList">
-              {topic.name}
-              <button onClick={() => this.handleDelete(topic.id)}>Delete</button>
-              <Modal trigger={<Button>Edit Topic</Button>}>
-                <Modal.Header>Edit Your Topic:</Modal.Header>
-                <Modal.Content>
-                  <Modal.Description>
-                    <Header>Edit Your Topic:</Header>
-                    <Form>
-                      <Form.Field>
-                        <label>Topic Name:</label>
-                        <input name="editTopic" type="text" placeholder={topic.name} onChange={this.handleEditTopic}/>
-                      </Form.Field>
-                      <input type="submit" className="large ui button" value="Change Topic"  onClick={() => this.handleEdit(topic.id)}/>
-                    </Form>
-                  </Modal.Description>
-                </Modal.Content>
-              </Modal>
+              <Link to="/notecards"><h2>{topic.name}</h2></Link>
+              <Card.Content >
+                <Button onClick={() => this.handleDelete(topic.id)}>Delete</Button>
+                <Modal trigger={<Button>Edit Topic</Button>}>
+                  <Modal.Header>Edit Your Topic:</Modal.Header>
+                  <Modal.Content>
+                    <Modal.Description>
+                      <Header>Edit Your Topic:</Header>
+                      <Form>
+                        <Form.Field>
+                          <label>Topic Name:</label>
+                          <input name="editTopic" type="text" placeholder={topic.name} onChange={this.handleEditTopic}/>
+                        </Form.Field>
+                        <input type="submit" className="large ui button" value="Change Topic"  onClick={() => this.handleEdit(topic.id)}/>
+                      </Form>
+                    </Modal.Description>
+                  </Modal.Content>
+                </Modal>
+              </Card.Content>
             </List.Item>
             </Card>
           })}
