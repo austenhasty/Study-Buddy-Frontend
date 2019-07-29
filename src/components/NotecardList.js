@@ -24,9 +24,6 @@ export default class NotecardList extends Component {
 
   render(){
     return(
-      // <React.Fragment>
-      //
-      // </React.Fragment>
       <React.Fragment>
         <Card.Group>
         {this.state.cards.map(card => {

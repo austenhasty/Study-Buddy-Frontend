@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import {Button, Header, Modal, Form, List} from 'semantic-ui-react'
+import {Button, Header, Modal, Form, List, Card} from 'semantic-ui-react'
+import { BrowserRouter as Router, Route} from 'react-router-dom'
+import NotecardList from './NotecardList'
 
 
 export default class Profile extends Component {
@@ -122,7 +124,7 @@ export default class Profile extends Component {
         </Modal>
         <ul>
           {this.state.myTopics.map((topic) => {
-            return <List.Item key={topic.id} className="topicList">
+            return <Card ><List.Item key={topic.id} className="topicList">
               {topic.name}
               <button onClick={() => this.handleDelete(topic.id)}>Delete</button>
               <Modal trigger={<Button>Edit Topic</Button>}>
@@ -141,8 +143,12 @@ export default class Profile extends Component {
                 </Modal.Content>
               </Modal>
             </List.Item>
+            </Card>
           })}
         </ul>
+        {/* <Router>
+          <Route path={"/notecards"} render={(props) => <NotecardList {...props} myTopics={this.state.myTopics}/>} />
+        </Router> */}
       </div>
     )
   }

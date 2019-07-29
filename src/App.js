@@ -56,7 +56,7 @@ class App extends Component {
         />
         <Route path={"/profile"} render={(props) => <Profile {...props} /> }
         />
-        <Route path={"/notecards"} render={(props) => <NotecardList {...props} />} />
+         <Route path={"/notecards"} render={(props) => <NotecardList {...props} />} />
       </Router>
     </div>
     );
