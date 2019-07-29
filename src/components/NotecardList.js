@@ -26,9 +26,9 @@ export default class NotecardList extends Component {
     return(
       <React.Fragment>
         <Card.Group>
-        {this.state.cards.map(card => {
-          return <Notecard key={card.id} term={card.term} definition={card.definition}  />
-        })}
+          {this.state.cards.map(card => {
+            return <Notecard key={card.id} term={card.term} definition={card.definition}  />
+          })}
       </Card.Group>
       </React.Fragment>
     )
