@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {Button, Header, Modal, Form, List, Card} from 'semantic-ui-react'
 import { BrowserRouter as Router, Route, Link} from 'react-router-dom'
 import NotecardList from './NotecardList'
+import EditTopicModal from './EditTopicModal'
 
 
 export default class Profile extends Component {
@@ -77,21 +78,7 @@ export default class Profile extends Component {
     })))
   }
 
-  handleEdit= (id) => {
-    const token = localStorage.getItem('jwt')
-    fetch(`http://localhost:3000/api/v1/topics/${id}`, {
-      method: 'PATCH',
-      headers: {
-        'Authorization': 'Bearer ' + token,
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify({name: this.state.editTopic})
-    })
-    .then(res => res.json())
-    .then(res => this.saveTopic(res))
-    .then(this.handleClose())
-  }
+
 
   saveTopic= res => {
     let topicArr = this.state.myTopics.slice()
@@ -116,6 +103,7 @@ export default class Profile extends Component {
   }
 
   handleClose= () => {
+    console.log('CLOSED')
     this.setState({
       modalOpen: false
     })
@@ -146,21 +134,22 @@ export default class Profile extends Component {
                 <Link to="topics/notecards"><h2>{topic.name}</h2></Link>
                 <Card.Content >
                   <Button onClick={() => this.handleDelete(topic.id)}>Delete</Button>
-                  <Modal closeIcon trigger={<Button onClick={this.handleOpen}>Edit Topic</Button>}>
-                    <Modal.Header>Edit Your Topic:</Modal.Header>
-                    <Modal.Content>
+                  <EditTopicModal topicId={topic.id} handleEdit={this.handleEdit} name={topic.name} handleEditTopic={this.handleEditTopic} myTopics={this.state.mytopics} editTopic={this.state.editTopic} saveTopic={this.saveTopic} />
+                    {/* <Modal closeIcon trigger={<Button onClick={this.handleOpen}>Edit Topic</Button>} onClose={this.handleClose}>
+                      <Modal.Header>Edit Your Topic:</Modal.Header>
+                      <Modal.Content>
                       <Modal.Description>
-                        <Header>Edit Your Topic:</Header>
-                        <Form onSubmit={() => this.handleEdit(topic.id)}>
-                          <Form.Field>
-                            <label>Topic Name:</label>
-                            <input name="editTopic" type="text" placeholder={topic.name} onChange={this.handleEditTopic}/>
-                          </Form.Field>
-                          <input type="submit" className="large ui button" value="Change Topic"  />
-                        </Form>
+                      <Header>Edit Your Topic:</Header>
+                    <Form onSubmit={() => this.handleEdit(topic.id)}>
+                    <Form.Field>
+                    <label>Topic Name:</label>
+                    <input name="editTopic" type="text" placeholder={topic.name} onChange={this.handleEditTopic}/>
+                    </Form.Field>
+                    <input type="submit" className="large ui button" value="Change Topic"  />
+                    </Form>
                       </Modal.Description>
                     </Modal.Content>
-                  </Modal>
+                  </Modal> */}
                 </Card.Content>
               </List.Item>
               </Card>
