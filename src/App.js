@@ -47,7 +47,7 @@ class App extends Component {
     <div className="App">
       <Router>
 
-        <NavBar handleLogout={this.logout}/>
+        <NavBar handleLogout={this.logout} user={this.state.user} handleLogin={this.handleLogin}/>
         <Route path="/users/new" render={(props) => <SignUpForm {...props} />
         }
         />
@@ -56,7 +56,7 @@ class App extends Component {
         />
         <Route path={"/profile"} render={(props) => <Profile {...props} /> }
         />
-         <Route path={"/notecards"} render={(props) => <NotecardList {...props} />} />
+        <Route path={"/topics/notecards"} render={(props) => <NotecardList {...props} />} />
       </Router>
     </div>
     );

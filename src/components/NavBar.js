@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 
 export default class NavBar extends Component {
 
+
+
   render(){
     return(
       <Menu>
@@ -18,7 +20,7 @@ export default class NavBar extends Component {
           </Link>
         </Menu.Item>
         <Menu.Item>
-          <Link to="/notecards">
+          <Link to="/topics/notecards">
             <Button>Notecards</Button>
           </Link>
         </Menu.Item>

@@ -8,6 +8,7 @@ export default class Profile extends Component {
   constructor(){
     super()
     this.state = {
+      modalOpen: false,
       myTopics: [],
       newTopic: null,
       editTopic: null
@@ -58,6 +59,8 @@ export default class Profile extends Component {
     .then(res => this.setState(prevState=> ({
       myTopics: [...prevState.myTopics, res.topic]
     })))
+    .then(this.handleClose())
+    // .catch(err=>console.log(err))
   }
 
   handleDelete = (id) => {
@@ -87,6 +90,7 @@ export default class Profile extends Component {
     })
     .then(res => res.json())
     .then(res => this.saveTopic(res))
+    .then(this.handleClose())
   }
 
   saveTopic= res => {
@@ -104,53 +108,69 @@ export default class Profile extends Component {
     }
   }
 
+  handleOpen= () => {
+    console.log('FIRED')
+    this.setState({
+      modalOpen: true
+    })
+  }
+
+  handleClose= () => {
+    this.setState({
+      modalOpen: false
+    })
+  }
+
   render(){
     return (
       <div>
-        <Modal trigger={<Button>New Topic</Button>} centered={false}>
+        <Modal closeIcon trigger={<Button onClick={this.handleOpen}>New Topic</Button>} open={this.state.modalOpen} onClose={this.handleClose} centered={false}>
           <Modal.Header>Create A New Topic</Modal.Header>
           <Modal.Content >
             <Modal.Description>
               <Header>Create a New Topic:</Header>
-              <Form onSubmit={this.handleSubmit}>
+              <Form  onSubmit={this.handleSubmit}>
                 <Form.Field>
                   <label>Topic Name:</label>
                   <input name="newTopic" type="text" placeholder="topic name" onChange={this.handleNewTopic}/>
                 </Form.Field>
-                <input type="submit" className="large ui button" value="Create Topic" />
+                <input  type="submit" className="ui approve button" value="Create Topic" />
               </Form>
             </Modal.Description>
           </Modal.Content>
         </Modal>
         <ul>
-          {this.state.myTopics.map((topic) => {
-            return <Card ><List.Item key={topic.id} className="topicList">
-              <Link to="/notecards"><h2>{topic.name}</h2></Link>
-              <Card.Content >
-                <Button onClick={() => this.handleDelete(topic.id)}>Delete</Button>
-                <Modal trigger={<Button>Edit Topic</Button>}>
-                  <Modal.Header>Edit Your Topic:</Modal.Header>
-                  <Modal.Content>
-                    <Modal.Description>
-                      <Header>Edit Your Topic:</Header>
-                      <Form>
-                        <Form.Field>
-                          <label>Topic Name:</label>
-                          <input name="editTopic" type="text" placeholder={topic.name} onChange={this.handleEditTopic}/>
-                        </Form.Field>
-                        <input type="submit" className="large ui button" value="Change Topic"  onClick={() => this.handleEdit(topic.id)}/>
-                      </Form>
-                    </Modal.Description>
-                  </Modal.Content>
-                </Modal>
-              </Card.Content>
-            </List.Item>
-            </Card>
-          })}
+          <Card.Group>
+            {this.state.myTopics.map((topic) => {
+              return <Card ><List.Item key={topic.id} className="topicList">
+                <Link to="topics/notecards"><h2>{topic.name}</h2></Link>
+                <Card.Content >
+                  <Button onClick={() => this.handleDelete(topic.id)}>Delete</Button>
+                  <Modal closeIcon trigger={<Button onClick={this.handleOpen}>Edit Topic</Button>}>
+                    <Modal.Header>Edit Your Topic:</Modal.Header>
+                    <Modal.Content>
+                      <Modal.Description>
+                        <Header>Edit Your Topic:</Header>
+                        <Form onSubmit={() => this.handleEdit(topic.id)}>
+                          <Form.Field>
+                            <label>Topic Name:</label>
+                            <input name="editTopic" type="text" placeholder={topic.name} onChange={this.handleEditTopic}/>
+                          </Form.Field>
+                          <input type="submit" className="large ui button" value="Change Topic"  />
+                        </Form>
+                      </Modal.Description>
+                    </Modal.Content>
+                  </Modal>
+                </Card.Content>
+              </List.Item>
+              </Card>
+            })}
+          </Card.Group>
         </ul>
-        {/* <Router>
-          <Route path={"/notecards"} render={(props) => <NotecardList {...props} myTopics={this.state.myTopics}/>} />
-        </Router> */}
+
+        <Router>
+          <Route path={"/topics/notecards"} render={(props) => <NotecardList  myTopics={this.state.myTopics}/>} />
+          </Router>
       </div>
     )
   }
