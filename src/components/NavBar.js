@@ -19,11 +19,7 @@ export default class NavBar extends Component {
             <Button>Topics</Button>
           </Link>
         </Menu.Item>
-        <Menu.Item>
-          <Link to="/topics/notecards">
-            <Button>Notecards</Button>
-          </Link>
-        </Menu.Item>
+
         <Menu.Item>
 
           <Button onClick={this.props.handleLogout}>Log Out</Button>

@@ -13,11 +13,15 @@ export default class NotecardList extends Component {
   }
 
   componentDidMount() {
-    fetch(' http://localhost:3000/api/v1/notecards')
+    console.log(this.props.match.params.id)
+    const id = this.props.match.params.id
+    fetch('http://localhost:3000/api/v1/show_by_topic/' + id)
     .then(res => res.json())
+    .then(res=> {
+      console.log(res)
+      return res
+    })
     .then(res => this.setState({
-      // myFronts: res.map(card => card.term),
-      // myBacks: res.map(card => card.definition),
       cards: res
     }))
   }

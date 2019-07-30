@@ -131,25 +131,10 @@ export default class Profile extends Component {
           <Card.Group>
             {this.state.myTopics.map((topic) => {
               return <Card ><List.Item key={topic.id} className="topicList">
-                <Link to="topics/notecards"><h2>{topic.name}</h2></Link>
+                <Link to={`topics/${topic.id}/notecards`}><h2>{topic.name}</h2></Link>
                 <Card.Content >
                   <Button onClick={() => this.handleDelete(topic.id)}>Delete</Button>
                   <EditTopicModal topicId={topic.id} handleEdit={this.handleEdit} name={topic.name} handleEditTopic={this.handleEditTopic} myTopics={this.state.mytopics} editTopic={this.state.editTopic} saveTopic={this.saveTopic} />
-                    {/* <Modal closeIcon trigger={<Button onClick={this.handleOpen}>Edit Topic</Button>} onClose={this.handleClose}>
-                      <Modal.Header>Edit Your Topic:</Modal.Header>
-                      <Modal.Content>
-                      <Modal.Description>
-                      <Header>Edit Your Topic:</Header>
-                    <Form onSubmit={() => this.handleEdit(topic.id)}>
-                    <Form.Field>
-                    <label>Topic Name:</label>
-                    <input name="editTopic" type="text" placeholder={topic.name} onChange={this.handleEditTopic}/>
-                    </Form.Field>
-                    <input type="submit" className="large ui button" value="Change Topic"  />
-                    </Form>
-                      </Modal.Description>
-                    </Modal.Content>
-                  </Modal> */}
                 </Card.Content>
               </List.Item>
               </Card>
@@ -158,8 +143,8 @@ export default class Profile extends Component {
         </ul>
 
         <Router>
-          <Route path={"/topics/notecards"} render={(props) => <NotecardList  myTopics={this.state.myTopics}/>} />
-          </Router>
+          <Route path={"/topics/:id/notecards"} render={(props) => <NotecardList  myTopics={this.state.myTopics} {...props}/>} />
+        </Router>
       </div>
     )
   }
