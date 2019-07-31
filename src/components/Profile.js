@@ -11,8 +11,8 @@ export default class Profile extends Component {
     this.state = {
       modalOpen: false,
       myTopics: [],
-      newTopic: null,
-      editTopic: null
+      newTopic: '',
+      editTopic: ''
     }
   }
 
@@ -120,7 +120,7 @@ export default class Profile extends Component {
               <Form  onSubmit={this.handleSubmit}>
                 <Form.Field>
                   <label>Topic Name:</label>
-                  <input name="newTopic" type="text" placeholder="topic name" onChange={this.handleNewTopic}/>
+                  <input name="newTopic" type="text" placeholder="topic name" value={this.state.newTopic} onChange={this.handleNewTopic}/>
                 </Form.Field>
                 <input  type="submit" className="ui approve button" value="Create Topic" />
               </Form>
