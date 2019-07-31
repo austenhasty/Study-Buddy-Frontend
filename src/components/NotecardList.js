@@ -81,6 +81,24 @@ export default class NotecardList extends Component {
     }))
   }
 
+  handleDelete = (id) => {
+    const token = localStorage.getItem('jwt')
+    let config = {
+      method: 'DELETE',
+      headers: {
+        'Authorization': 'Bearer ' + token,
+      }
+    }
+    fetch(`http://localhost:3000/api/v1/topics_notecards/${id}`, config)
+    // console.log(config)
+    // console.log(id)
+    .then(res => res.json())
+    .then(this.setState(prevState => ({
+      cards: prevState.cards.filter(card => card.id !== id)
+    })))
+    .catch(err => console.log(err))
+  }
+
   render(){
     return(
       <React.Fragment>
@@ -105,7 +123,7 @@ export default class NotecardList extends Component {
         </Modal>
         <Card.Group>
           {this.state.cards.map(card => {
-            return <Notecard key={card.id} term={card.term} definition={card.definition}  />
+            return <Notecard key={card.id} term={card.term} definition={card.definition}  handleDelete={this.handleDelete} cardId={card.id}/>
           })}
       </Card.Group>
       </React.Fragment>
