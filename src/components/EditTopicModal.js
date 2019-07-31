@@ -37,21 +37,7 @@ export default class EditTopicModal extends Component {
     .then(res => this.props.saveTopic(res))
     .then(this.handleClose())
   }
-  //
-  // saveTopic= res => {
-  //   let topicArr = this.props.myTopics.slice()
-  //   let level = null
-  //
-  //   for (let i=0; i < topicArr.length; i++) {
-  //     if (topicArr[i].id === res.topic.id) {
-  //       level = i
-  //     }
-  //     topicArr[level] = res.topic
-  //     this.setState({
-  //       myTopics: topicArr
-  //     })
-  //   }
-  // }
+
 
   render() {
     return (

@@ -11,6 +11,8 @@ export default class NotecardList extends Component {
       cards: [],
       newTerm: '',
       newDefinition: '',
+      editTerm: '',
+      editDefinition: '',
       modalOpen: false
     }
   }
@@ -29,7 +31,11 @@ export default class NotecardList extends Component {
     })
   }
 
-  handle
+  handleEditNotecard= event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
 
   handleNewNotecard = event => {
     this.setState({
@@ -99,6 +105,21 @@ export default class NotecardList extends Component {
     .catch(err => console.log(err))
   }
 
+  saveNotecard= res => {
+    let noteArray = this.state.cards.slice()
+    let level = null
+
+    for (let i=0; i < noteArray.length; i++) {
+      if (noteArray[i].id === res.notecard.id) {
+        level = i
+      }
+      noteArray[level] = res.notecard
+      this.setState({
+        cards: noteArray
+      })
+    }
+  }
+
   render(){
     return(
       <React.Fragment>
@@ -123,7 +144,7 @@ export default class NotecardList extends Component {
         </Modal>
         <Card.Group>
           {this.state.cards.map(card => {
-            return <Notecard key={card.id} term={card.term} definition={card.definition}  handleDelete={this.handleDelete} cardId={card.id}/>
+            return <Notecard key={card.id} term={card.term} definition={card.definition}  handleDelete={this.handleDelete} cardId={card.id} editTerm={this.state.editTerm} editDefinition={this.state.editDefinition} handleEditNotecard={this.handleEditNotecard} saveNotecard={this.saveNotecard}/>
           })}
       </Card.Group>
       </React.Fragment>
