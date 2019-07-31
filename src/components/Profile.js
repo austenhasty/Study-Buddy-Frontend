@@ -76,6 +76,7 @@ export default class Profile extends Component {
     .then(this.setState(prevState =>({
       myTopics: prevState.myTopics.filter(topic => topic.id !== id)
     })))
+    .catch(err => console.log(err))
   }
 
 

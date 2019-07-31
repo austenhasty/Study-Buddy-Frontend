@@ -22,7 +22,7 @@ export default class Notecard extends Component {
     return(
 <div>
   <ReactCardFlip isFlipped={this.state.isFlipped}  flipDirection="vertical">
-    <FrontCard key="front" term={this.props.term} onClick={this.handleClick} >
+    <FrontCard handleDelete={this.props.handleDelete} cardId={this.props.cardId} key="front" term={this.props.term} onClick={this.handleClick} >
     </FrontCard>
 
     <BackCard key="back" defintion={this.props.definition} onClick={this.handleClick} >
