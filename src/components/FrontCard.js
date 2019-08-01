@@ -14,10 +14,14 @@ export default class FrontCard extends Component {
   render(){
 
       return (
-        <Card className="front">
-          <Card.Content onClick={this.handleClick}>{this.props.term}</Card.Content>
-          <Button onClick={() => this.props.handleDelete(this.props.cardId)}>Delete</Button> <EditNotecardModal cardId={this.props.cardId} editTerm={this.props.editTerm} editDefinition={this.props.editDefinition} handleEditNotecard={this.props.handleEditNotecard} saveNotecard={this.props.saveNotecard} term={this.props.term} definition={this.props.definition}  />
-        </Card>
-      )
-  }
-}
+        <div>
+          <Card id="front">
+            <Card.Content onClick={this.handleClick}>{this.props.term}</Card.Content>
+            <Card.Content extra>
+              <Button onClick={() => this.props.handleDelete(this.props.cardId)}>Delete</Button> <EditNotecardModal cardId={this.props.cardId} editTerm={this.props.editTerm} editDefinition={this.props.editDefinition} handleEditNotecard={this.props.handleEditNotecard} saveNotecard={this.props.saveNotecard} term={this.props.term} definition={this.props.definition}  />
+              </Card.Content>
+              </Card>
+            </div>
+          )
+        }
+      }

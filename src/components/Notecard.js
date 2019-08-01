@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import ReactCardFlip from 'react-card-flip'
-// import { Card } from 'semantic-ui-react'
+import { List, Card } from 'semantic-ui-react'
 import FrontCard from './FrontCard'
 import BackCard from './BackCard'
 
@@ -20,16 +20,14 @@ export default class Notecard extends Component {
 
   render(){
     return(
-      <div>
-        <ReactCardFlip isFlipped={this.state.isFlipped}  flipDirection="vertical">
-          <FrontCard handleDelete={this.props.handleDelete} cardId={this.props.cardId} key="front" term={this.props.term} onClick={this.handleClick} editTerm={this.props.editTerm} editDefinition={this.props.editDefinition} handleEditNotecard={this.props.handleEditNotecard} saveNotecard={this.props.saveNotecard} definition={this.props.definition}>
-          </FrontCard>
+  <ReactCardFlip isFlipped={this.state.isFlipped}  flipDirection="vertical">
 
-          <BackCard key="back" defintion={this.props.definition} onClick={this.handleClick} >
-          </BackCard>
-        </ReactCardFlip>
-      </div>
+    <FrontCard handleDelete={this.props.handleDelete} cardId={this.props.cardId} key="front" term={this.props.term} onClick={this.handleClick} editTerm={this.props.editTerm} editDefinition={this.props.editDefinition} handleEditNotecard={this.props.handleEditNotecard} saveNotecard={this.props.saveNotecard} definition={this.props.definition}>
+    </FrontCard>
 
+    <BackCard key="back" defintion={this.props.definition} onClick={this.handleClick} >
+    </BackCard>
+  </ReactCardFlip>
     )
   }
 }
