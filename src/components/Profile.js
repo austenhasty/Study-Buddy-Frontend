@@ -129,18 +129,22 @@ export default class Profile extends Component {
           </Modal.Content>
         </Modal>
         <ul>
-          <Card.Group>
-            {this.state.myTopics.map((topic) => {
-              return <Card ><List.Item key={topic.id} className="topicList">
-                <Link to={`topics/${topic.id}/notecards`}><h2>{topic.name}</h2></Link>
-                <Card.Content >
-                  <Button onClick={() => this.handleDelete(topic.id)}>Delete</Button>
-                  <EditTopicModal topicId={topic.id} handleEdit={this.handleEdit} name={topic.name} handleEditTopic={this.handleEditTopic} myTopics={this.state.mytopics} editTopic={this.state.editTopic} saveTopic={this.saveTopic} />
-                </Card.Content>
-              </List.Item>
-              </Card>
-            })}
-          </Card.Group>
+          <div className="myTopics">
+            <Card.Group itemsPerRow={2}>
+              {this.state.myTopics.map((topic) => {
+                return <Card id="topics" key={topic.id}>
+                  <Card.Content>
+                    <Link to={`topics/${topic.id}/notecards`}><h2>{topic.name}</h2></Link>
+                  </Card.Content>
+                  <Card.Content extra>
+                    <Button onClick={() => this.handleDelete(topic.id)}>Delete</Button>
+                    <EditTopicModal topicId={topic.id} handleEdit={this.handleEdit} name={topic.name} handleEditTopic={this.handleEditTopic} myTopics={this.state.mytopics} editTopic={this.state.editTopic} saveTopic={this.saveTopic} />
+                  </Card.Content>
+                </Card>
+                
+                  })}
+            </Card.Group>
+          </div>
         </ul>
 
         <Router>

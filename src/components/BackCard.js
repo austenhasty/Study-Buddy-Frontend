@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { Card, Button } from 'semantic-ui-react'
-// import ReactCardFlip from 'react-card-flip'
+
 
 
 export default class BackCard extends Component {
@@ -11,11 +11,14 @@ export default class BackCard extends Component {
 
   render() {
     return (
-      <Card className="back" onClick={this.handleClick}>
 
-        <Card.Content>{this.props.defintion}</Card.Content>
-        <Button >Back To The Front</Button>
-      </Card>
+        <Card id="back" >
+
+          <Card.Content onClick={this.handleClick}>{this.props.defintion}</Card.Content>
+          <Card.Content extra>
+            <Button onClick={this.handleClick}>Back To The Front</Button>
+          </Card.Content>
+        </Card>
     )
   }
 }

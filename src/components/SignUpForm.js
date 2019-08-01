@@ -46,28 +46,28 @@ export default class SignUpForm extends Component {
 
   render(){
     return (
-      <Form className="signup" onSubmit={this.createUser}>
-        <h2>Ready? Create Your Account Below!</h2>
-        <Form.Field onChange={this.handleChange}>
-          <label>First Name: </label>
-          <input name="firstName" type="text" placeholder="First Name" required/>
-        </Form.Field>
-        <Form.Field onChange={this.handleChange}>
-          <label>Last Name: </label>
-          <input name="lastName" type="text" placeholder="Last Name" required/>
-        </Form.Field>
-        <Form.Field onChange={this.handleChange}>
-          <label>Username: </label>
-          <input name="username" type="text" placeholder="username" required/>
-        </Form.Field>
-        <Form.Field onChange={this.handleChange}>
-          <label>Password</label>
-          <input id="signup" name="password" type="password" placeholder="Password" required/>
-        </Form.Field>
+        <Form id="signup" onSubmit={this.createUser}>
+          <h2>Ready? Create Your Account Below!</h2>
+          <Form.Field onChange={this.handleChange}>
+            <label>First Name: </label>
+            <input name="firstName" type="text" placeholder="First Name" required/>
+          </Form.Field>
+          <Form.Field onChange={this.handleChange}>
+            <label>Last Name: </label>
+            <input name="lastName" type="text" placeholder="Last Name" required/>
+          </Form.Field>
+          <Form.Field onChange={this.handleChange}>
+            <label>Username: </label>
+            <input name="username" type="text" placeholder="username" required/>
+          </Form.Field>
+          <Form.Field onChange={this.handleChange}>
+            <label>Password</label>
+            <input id="signupSubmit" name="password" type="password" placeholder="Password" required/>
+          </Form.Field>
 
-        <Button type='submit'>Create New User</Button>
-        <Divider hidden />
-      </Form>
+          <Button type='submit'>Create New User</Button>
+          <Divider hidden />
+        </Form>
     )
   }
 }

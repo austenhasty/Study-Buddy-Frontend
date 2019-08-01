@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* background-image: url(https://cdn.shopify.com/s/files/1/1413/2106/products/Vintage_Notebook_Paper_12_x_12_ST_large.png?v=1502252221); */
+  /* background-color: lightgray; */
 }
 
 code {
@@ -12,28 +14,71 @@ code {
     monospace;
 }
 
+.App {
+  text-align: center;
+}
+
 .login {
   margin: 0 auto;
+  margin-top: 5%;
   height: 30%;
   width: 30%
 }
 
-.signup {
+
+
+#signup {
   margin: 0 auto;
+  margin-top: 5%;
   height: 30%;
   width: 30%
 }
 
-.topicList {
+/* .topicList {
   list-style: none;
+} */
+
+.showCards {
+  /* margin-right: 3%; */
 }
 
-.front {
-  padding: 5% !important;
-  margin: 10% !important
+#front {
+  /* overflow: hidden; */
+  font-size: 24px;
+  min-height: 20vh;
+  max-height: 20vh;
+  /* padding: 5% !important; */
+  margin: 10% ;
+  max-width: 30vw;
+  min-width: 30vw;
+  /* background-color: grey; */
+  background-image: url(https://cdn.shopify.com/s/files/1/1413/2106/products/Vintage_Notebook_Paper_12_x_12_ST_large.png?v=1502252221);
 }
 
-.back {
-  padding: 5% !important;
-  margin: 10% !important
+#back {
+  font-size: 24px;
+  min-height: 20vh;
+  max-height: 20vh;
+  /* padding: 5% !important; */
+  margin: 10%;
+  max-width: 30vw;
+  min-width: 30vw;
+  background-image: url(https://cdn.shopify.com/s/files/1/1413/2106/products/Vintage_Notebook_Paper_12_x_12_ST_large.png?v=1502252221);
+
+}
+
+#nav {
+  /* background-image: url(https://cdn.shopify.com/s/files/1/1413/2106/products/Vintage_Notebook_Paper_12_x_12_ST_large.png?v=1502252221); */
+  /* background-color: lightgray; */
+  padding: 1%
+}
+
+#topics {
+  font-size: 24px;
+  max-width: 30vw;
+  min-width: 30vw;
+  min-height: 20vh;
+  max-height: 20vh;
+  background-image: url(https://cdn.shopify.com/s/files/1/1413/2106/products/Vintage_Notebook_Paper_12_x_12_ST_large.png?v=1502252221);
+
 }

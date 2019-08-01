@@ -8,12 +8,8 @@ export default class NavBar extends Component {
 
   render(){
     return(
-      <Menu>
-        <Menu.Item>
-          <Link to="/profile">
-            <Button>Home</Button>
-          </Link>
-        </Menu.Item>
+      <Menu id="nav">
+      
         <Menu.Item>
           <Link to="/profile">
             <Button>Topics</Button>

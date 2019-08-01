@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
+// import './App.css';
+// import './index.css'
 import { BrowserRouter as Router, Route} from 'react-router-dom'
 import SignUpForm from './components/SignUpForm'
 import LoginForm from './components/LoginForm'

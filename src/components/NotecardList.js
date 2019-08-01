@@ -142,11 +142,13 @@ export default class NotecardList extends Component {
             </Modal.Description>
           </Modal.Content>
         </Modal>
-        <Card.Group>
-          {this.state.cards.map(card => {
-            return <Notecard key={card.id} term={card.term} definition={card.definition}  handleDelete={this.handleDelete} cardId={card.id} editTerm={this.state.editTerm} editDefinition={this.state.editDefinition} handleEditNotecard={this.handleEditNotecard} saveNotecard={this.saveNotecard}/>
-          })}
-      </Card.Group>
+        <ul>
+          <Card.Group itemsPerRow={2}>
+            {this.state.cards.map(card => {
+              return <Notecard key={card.id} term={card.term} definition={card.definition}  handleDelete={this.handleDelete} cardId={card.id} editTerm={this.state.editTerm} editDefinition={this.state.editDefinition} handleEditNotecard={this.handleEditNotecard} saveNotecard={this.saveNotecard}/>
+            })}
+          </Card.Group>
+            </ul>
       </React.Fragment>
     )
   }
