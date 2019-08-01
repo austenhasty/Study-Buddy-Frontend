@@ -14,7 +14,7 @@ export default class BackCard extends Component {
       <Card className="back" onClick={this.handleClick}>
 
         <Card.Content>{this.props.defintion}</Card.Content>
-        <Button >Click Me for Answer</Button>
+        <Button >Back To The Front</Button>
       </Card>
     )
   }

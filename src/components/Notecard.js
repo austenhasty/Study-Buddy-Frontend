@@ -20,15 +20,15 @@ export default class Notecard extends Component {
 
   render(){
     return(
-<div>
-  <ReactCardFlip isFlipped={this.state.isFlipped}  flipDirection="vertical">
-    <FrontCard handleDelete={this.props.handleDelete} cardId={this.props.cardId} key="front" term={this.props.term} onClick={this.handleClick} >
-    </FrontCard>
+      <div>
+        <ReactCardFlip isFlipped={this.state.isFlipped}  flipDirection="vertical">
+          <FrontCard handleDelete={this.props.handleDelete} cardId={this.props.cardId} key="front" term={this.props.term} onClick={this.handleClick} editTerm={this.props.editTerm} editDefinition={this.props.editDefinition} handleEditNotecard={this.props.handleEditNotecard} saveNotecard={this.props.saveNotecard} definition={this.props.definition}>
+          </FrontCard>
 
-    <BackCard key="back" defintion={this.props.definition} onClick={this.handleClick} >
-    </BackCard>
-  </ReactCardFlip>
-  </div>
+          <BackCard key="back" defintion={this.props.definition} onClick={this.handleClick} >
+          </BackCard>
+        </ReactCardFlip>
+      </div>
 
     )
   }
