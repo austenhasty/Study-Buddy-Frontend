@@ -6,7 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* background-image: url(https://cdn.shopify.com/s/files/1/1413/2106/products/Vintage_Notebook_Paper_12_x_12_ST_large.png?v=1502252221); */
-  /* background-color: lightgray; */
+  background-color: lightgray;
 }
 
 code {
@@ -81,4 +81,11 @@ code {
   max-height: 20vh;
   background-image: url(https://cdn.shopify.com/s/files/1/1413/2106/products/Vintage_Notebook_Paper_12_x_12_ST_large.png?v=1502252221);
 
+}
+
+.react-card-flip {
+  position: inherit;
+  margin: 0.25vw;
+  margin-left: 0 auto;
+  margin-right: 0 auto
 }
