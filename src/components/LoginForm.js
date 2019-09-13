@@ -5,18 +5,11 @@ import { Link } from 'react-router-dom'
 
 export default class LoginForm extends Component {
 
-// state ={
-//   username: ''
-// }
 
 constructor() {
   super()
   this.username = React.createRef()
   this.password = React.createRef()
-
-  // if (this.getToken()) {
-  //   this.getProfile()
-  // }
 }
 
 login = (ev) => {
