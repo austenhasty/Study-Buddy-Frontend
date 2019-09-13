@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-// import './App.css';
-// import './index.css'
 import { BrowserRouter as Router, Route} from 'react-router-dom'
 import SignUpForm from './components/SignUpForm'
 import LoginForm from './components/LoginForm'
 import NavBar from './components/NavBar'
 import Profile from './components/Profile'
-// import Notecards from './components/Notecards'
 import NotecardList from './components/NotecardList'
 
 class App extends Component {
@@ -25,10 +22,6 @@ class App extends Component {
     })
   }
 
-  // handleLogout = () => {
-  //   this.
-  // }
-
   logout = () => {
     this.clearToken()
     this.setState({
@@ -36,7 +29,7 @@ class App extends Component {
       loggedIn: false
     })
     window.location.replace('http://localhost:3001/')
-    // return false
+  
   }
 
   clearToken(jwt) {

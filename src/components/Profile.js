@@ -129,7 +129,7 @@ export default class Profile extends Component {
           </Modal.Content>
         </Modal>
         <ul>
-          {/* <div className="myTopics"> */}
+
           <Card.Group itemsPerRow={2}>
             {this.state.myTopics.map((topic) => {
               return <Card id="topics" key={topic.id}>
@@ -144,7 +144,6 @@ export default class Profile extends Component {
 
             })}
           </Card.Group>
-          {/* </div> */}
         </ul>
 
         <Router>
