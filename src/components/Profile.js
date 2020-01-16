@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Button, Header, Modal, Form, List, Card} from 'semantic-ui-react'
+import {Button, Header, Modal, Form, Card} from 'semantic-ui-react'
 import { BrowserRouter as Router, Route, Link} from 'react-router-dom'
 import NotecardList from './NotecardList'
 import EditTopicModal from './EditTopicModal'
