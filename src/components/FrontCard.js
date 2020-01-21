@@ -9,8 +9,6 @@ export default class FrontCard extends Component {
     this.props.onClick(ev)
   }
 
-
-
   render(){
 
       return (
