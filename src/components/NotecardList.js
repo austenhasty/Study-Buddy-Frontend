@@ -96,8 +96,7 @@ export default class NotecardList extends Component {
       }
     }
     fetch(`http://localhost:3000/api/v1/topics_notecards/${id}`, config)
-    // console.log(config)
-    // console.log(id)
+
     .then(res => res.json())
     .then(this.setState(prevState => ({
       cards: prevState.cards.filter(card => card.id !== id)

@@ -3,6 +3,8 @@ import {Modal, Form, Header, Button} from 'semantic-ui-react'
 
 
 export default class EditTopicModal extends Component {
+
+  
   constructor(){
     super()
     this.state = {
@@ -37,7 +39,6 @@ export default class EditTopicModal extends Component {
     .then(res => this.props.saveTopic(res))
     .then(this.handleClose())
   }
-
 
   render() {
     return (

@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import ReactCardFlip from 'react-card-flip'
-// import { List, Card } from 'semantic-ui-react'
 import FrontCard from './FrontCard'
 import BackCard from './BackCard'
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {Modal, Header, Button, Form} from 'semantic-ui-react'
 
 export default class EditNotecardModal extends Component {
+  
   constructor(){
     super()
     this.state= {
